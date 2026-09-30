@@ -47,18 +47,18 @@ Metrics -> Logs -> Traces -> Root cause
 
 Một số thuật ngữ sẽ xuất hiện nhiều trong bài:
 
-| Thuật ngữ | Dùng để trả lời câu hỏi nào? |
-|---|---|
-| `correlation_id` | Request nào trong log tương ứng với trace nào? |
-| Structured log | Request đã xảy ra chuyện gì, có latency/error/token/cost bao nhiêu? |
-| Trace/span | Trong một request, bước nào chạy lâu hoặc bị lỗi? |
-| PII scrubbing | Log/trace có vô tình lưu email, số điện thoại, CCCD hoặc dữ liệu nhạy cảm không? |
-| P50/P95/P99 | Đa số request có nhanh không, nhóm request chậm nhất tệ đến mức nào? |
-| TTFT | Người dùng phải chờ bao lâu trước khi LLM bắt đầu trả lời? |
-| Retrieval success | RAG có tìm được context phù hợp hay đang thất bại? |
-| Quality proxy | Câu trả lời có dấu hiệu giảm chất lượng không, dù chưa chấm thủ công? |
-| SLO/error budget | Mức chất lượng nào được xem là đạt, và hệ thống được phép lỗi bao nhiêu? |
-| Alert/runbook | Khi metric vượt ngưỡng xấu thì ai cần xử lý và xử lý theo các bước nào? |
+| Thuật ngữ         | Dùng để trả lời câu hỏi nào?                                                     |
+| ----------------- | -------------------------------------------------------------------------------- |
+| `correlation_id`  | Request nào trong log tương ứng với trace nào?                                   |
+| Structured log    | Request đã xảy ra chuyện gì, có latency/error/token/cost bao nhiêu?              |
+| Trace/span        | Trong một request, bước nào chạy lâu hoặc bị lỗi?                                |
+| PII scrubbing     | Log/trace có vô tình lưu email, số điện thoại, CCCD hoặc dữ liệu nhạy cảm không? |
+| P50/P95/P99       | Đa số request có nhanh không, nhóm request chậm nhất tệ đến mức nào?             |
+| TTFT              | Người dùng phải chờ bao lâu trước khi LLM bắt đầu trả lời?                       |
+| Retrieval success | RAG có tìm được context phù hợp hay đang thất bại?                               |
+| Quality proxy     | Câu trả lời có dấu hiệu giảm chất lượng không, dù chưa chấm thủ công?            |
+| SLO/error budget  | Mức chất lượng nào được xem là đạt, và hệ thống được phép lỗi bao nhiêu?         |
+| Alert/runbook     | Khi metric vượt ngưỡng xấu thì ai cần xử lý và xử lý theo các bước nào?          |
 
 ## Bắt đầu nhanh
 
@@ -147,13 +147,13 @@ Baseline log chưa đạt là bình thường vì các `TODO` của CP1 chưa đ
 
 ## Lộ trình 9:00–13:00 (240 phút)
 
-| Mốc | Thời gian | Việc chính | Hoàn thành khi |
-|---|---:|---|---|
-| CP0 | 9:00–9:30 (0–30 phút) | Setup, chạy API và baseline | `/health` trả `ok: true`, log được tạo |
-| CP1 | 9:30–10:20 (30–80 phút) | Correlation ID, structured log, PII | `validate_logs.py` đạt ít nhất 80/100 |
-| CP2 | 10:20–11:40 (80–160 phút) | Trace, prompt, dashboard, SLO/alert | có span tree; dashboard validator đạt 6/6 |
-| CP3 | 11:40–12:30 (160–210 phút) | Điều tra challenge K4-L3B | có metric, log và trace cùng một request |
-| CP4 | 12:30–13:00 (210–240 phút) | Report, evidence và kiểm tra cuối | tests/validators chạy xong trên commit nộp |
+| Mốc |                  Thời gian | Việc chính                          | Hoàn thành khi                             |
+| --- | -------------------------: | ----------------------------------- | ------------------------------------------ |
+| CP0 |      9:00–9:30 (0–30 phút) | Setup, chạy API và baseline         | `/health` trả `ok: true`, log được tạo     |
+| CP1 |    9:30–10:20 (30–80 phút) | Correlation ID, structured log, PII | `validate_logs.py` đạt ít nhất 80/100      |
+| CP2 |  10:20–11:40 (80–160 phút) | Trace, prompt, dashboard, SLO/alert | có span tree; dashboard validator đạt 6/6  |
+| CP3 | 11:40–12:30 (160–210 phút) | Điều tra challenge K4-L3B           | có metric, log và trace cùng một request   |
+| CP4 | 12:30–13:00 (210–240 phút) | Report, evidence và kiểm tra cuối   | tests/validators chạy xong trên commit nộp |
 
 Chi tiết từng checkpoint nằm trong [docs/CHECKPOINTS.md](docs/CHECKPOINTS.md).
 
@@ -198,14 +198,14 @@ Dashboard dùng `data/logs.jsonl` làm nguồn chuẩn và giữ đúng 6 panel 
 
 Mỗi panel trên dashboard nên trả lời một câu hỏi vận hành rõ ràng:
 
-| Panel | Câu hỏi cần trả lời |
-|---|---|
+| Panel   | Câu hỏi cần trả lời                                        |
+| ------- | ---------------------------------------------------------- |
 | Latency | Request có chậm không? P50/P95/P99 và TTFT đang ở mức nào? |
-| Traffic | Hệ thống đang nhận bao nhiêu request theo thời gian? |
-| Errors | Error rate có tăng không, retrieval có đang fail không? |
-| Cost | Chi phí có tăng bất thường không? |
-| Tokens | Input/output token có dài bất thường không? |
-| Quality | Quality proxy có giảm dưới mức chấp nhận được không? |
+| Traffic | Hệ thống đang nhận bao nhiêu request theo thời gian?       |
+| Errors  | Error rate có tăng không, retrieval có đang fail không?    |
+| Cost    | Chi phí có tăng bất thường không?                          |
+| Tokens  | Input/output token có dài bất thường không?                |
+| Quality | Quality proxy có giảm dưới mức chấp nhận được không?       |
 
 SLO là mục tiêu chất lượng, ví dụ `99.5% request thành công và latency <= 3000ms`. Error budget là phần được phép không đạt SLO, ví dụ SLO 99.5% nghĩa là error budget 0.5%. Alert nên dựa trên triệu chứng quan sát được, ví dụ latency P95 cao, error rate tăng hoặc retrieval success giảm. Runbook là hướng dẫn người trực cần kiểm tra dashboard, lọc log, mở trace và mitigation như thế nào.
 

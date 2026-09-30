@@ -23,7 +23,10 @@ Giữ time range mặc định 60 phút, refresh 30 giây và hiển thị thres
 
 1. Hoàn thiện logging/PII và chạy API.
 2. Chạy `python scripts/load_test.py --concurrency 5` để tạo baseline.
-3. Dùng `data/logs.jsonl` làm nguồn chuẩn để tạo đúng sáu panel bằng Streamlit, notebook, Grafana hoặc công cụ tương đương. Langfuse vẫn là nơi mở trace/prompt version để điều tra sâu.
+3. Dashboard local đã có sẵn tại `http://127.0.0.1:8000/dashboard`; endpoint
+   `/dashboard/data` trả cùng snapshot ở dạng JSON. Cả hai đọc trực tiếp
+   `data/logs.jsonl` và dùng `config/dashboard.yaml` làm contract. Langfuse
+   vẫn là nơi mở trace/prompt version để điều tra sâu.
 4. Đặt tên panel, đơn vị và threshold giống contract.
 5. Chạy validator:
 
@@ -32,6 +35,10 @@ python scripts/validate_dashboard.py
 ```
 
 Validator kiểm tra cấu trúc contract; nó không thể chứng minh biểu đồ trong ảnh dùng đúng dữ liệu. Evidence runtime vẫn bắt buộc.
+
+Sau khi chạy workload, mở `/dashboard` và chụp dashboard khi đủ sáu panel.
+Trang tự refresh mỗi 30 giây, hiển thị cửa sổ 60 phút, đơn vị, trạng thái
+threshold/SLO và số record đã phân tích.
 
 ## Cách kiểm tra runtime
 
