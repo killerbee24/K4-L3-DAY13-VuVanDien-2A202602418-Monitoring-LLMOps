@@ -8,7 +8,7 @@
 - **MSSV: 2A202602418**
 - **Lớp:** K4-L3B
 - **Repository URL:** [github.com/killerbee24/K4-L3-DAY13-VuVanDien-2A202602418-Monitoring-LLMOps](https://github.com/killerbee24/K4-L3-DAY13-VuVanDien-2A202602418-Monitoring-LLMOps)
-- **Commit SHA cuối:**
+- **Commit SHA cuối:** `32b318462eaf1fa4291b769021e0183dcf44c5da`
 - **Challenge ID:** `day13-k4-l3b-monitoring-llmops-v1`
 - **Tên project Langfuse cá nhân:** `day13-k4-l3b-2A202602418`
 
@@ -178,7 +178,7 @@
 
 ## 9. Checklist trước khi nộp
 
-- [ ] Kết quả và evidence thuộc commit SHA cuối.
+- [x] Kết quả và evidence thuộc commit SHA cuối.
 - [x] Tất cả ảnh/output mở được bằng đường dẫn tương đối.
 - [x] Incident evidence nối đúng metric → log → trace.
 - [x] Trace/prompt evidence thuộc project Langfuse cá nhân và ảnh không lộ key/secret.
